@@ -26,11 +26,11 @@ struct ContentView: View {
                     postList()
                 }.navigationTitle("accolade").font(Font.custom("Oxygen-Regular", size: 32))
             }.tabItem {Image(systemName: "house")
-                Text("home")}.tag(1)
+                Text("")}.tag(1)
             Text("Tab Content 2").tabItem {Image(systemName: "magnifyingglass")
-                Text("Search") }.tag(2)
+                Text("") }.tag(2)
             Text("Tab Content 3").tabItem {Image(systemName: "person")
-                Text("you") }.tag(3)
+                Text("") }.tag(3)
         }.font(Font.custom("Oxygen-Regular", size: 4))
     }
 }
