@@ -8,18 +8,18 @@
 import SwiftUI
 import SwiftData
 import FirebaseCore
-import FirebaseDatabase
+import FirebaseFirestore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
+      FirebaseApp.configure()
     return true
   }
 }
-
+// Initialize database and get specific user info
+let db = Firestore.firestore()
 @main
 struct accoladeApp: App {
     // register app delegate for Firebase setup

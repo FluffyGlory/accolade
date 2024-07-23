@@ -7,7 +7,8 @@
 
 import SwiftUI
 import SwiftData
-
+import FirebaseCore
+import FirebaseFirestore
 
 struct ContentView: View {
     init() {
@@ -19,10 +20,25 @@ struct ContentView: View {
         
 //            UITabBar.appearance().updateTextAttributes([.font : UIFont(name: "Oxygen-Regular", size: 24)!], for: .normal)
         }
+    @State private var userName = ""
     var body: some View {
         TabView {
             NavigationStack {
                 VStack {
+                    Button("Name: " + userName) {
+                        Task {
+                            do {
+                              let snapshot = try await db.collection("users").getDocuments()
+                              for document in snapshot.documents {
+                                print("\(document.documentID) => \(document.data())")
+                                  userName =  document.data()["first"] as! String
+                              }
+                            } catch {
+                              print("Error getting documents: \(error)")
+                            }
+
+                        }
+                    }
                     postList()
                 }.navigationTitle("accolade").font(Font.custom("Oxygen-Regular", size: 32))
             }.tabItem {Image(systemName: "house")
